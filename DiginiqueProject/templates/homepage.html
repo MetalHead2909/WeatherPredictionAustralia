@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Weather Prediction</title>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/homepage.css')}}">
+    </head>
+    <body>
+        <nav class="navbar bg-body-tertiary" style="padding: 0;">
+            <div class="container-fluid" style="background-color: black;color: white;">
+              <a class="navbar-brand" href="#" style="color: white;">Weather: Rain Prediction</a>
+              <a class="navbar-brand" href="#" style="color: white;">AUSTRALIA</a>
+            </div>
+        </nav>
+        <main>
+            <form action="/result" method="POST">
+                <div class="grid-container" style="width:50%;">
+                    <div class="grid-child">
+                        <label for="Date" class="input-param">Date:</label>
+                        <div>
+                            <input type="date" id="Date" name="Date" class="input-param" style="color: gray;">
+                        </div>
+                    </div>
+                    <div class="grid-child">
+                        <label for="Location" class="input-param">Location:</label>
+                            <div id="Loc" class="input-param">
+                            </div>
+                    </div>
+                </div>
+                <div class="grid-container2">
+                    <div class="grid-child">
+                        <!-- <label for="MinTemp">MinTemp:</label> -->
+                        <input type="text" id="MinTemp" name="MinTemp" class="input-param input-parameter" placeholder="MinTemp">
+                    </div>
+                    <div class="grid-child">
+                        <!-- <label for="MaxTemp">MaxTemp:</label> -->
+                        <input type="text" id="MaxTemp" name="MaxTemp" class="input-param input-parameter" placeholder="MaxTemp">
+                    </div>
+                </div>
+                <div class="grid-container2">
+                    <div class="grid-child">
+                        <!-- <label for="Rainfall">Rainfall:</label> -->
+                        <input type="text" id="Rainfall" name="Rainfall" class="input-param input-parameter" placeholder="Rainfall">
+                    </div>
+
+                    <div class="grid-child">
+                        <!-- <label for="Evaporation">Evaporation:</label> -->
+                        <input type="text" id="Evaporation" name="Evaporation" class="input-param input-parameter" placeholder="Evaporation">
+                    </div>
+
+                    <div class="grid-child">
+                        <!-- <label for="Sunshine">Sunshine:</label> -->
+                        <input type="text" id="Sunshine" name="Sunshine" class="input-param input-parameter" placeholder="Sunshine">
+                    </div>
+
+                    <!-- <div class="grid-child"></div> -->
+                </div>
+                <div class="grid-container2">
+                    <div class="grid-child">
+                        <label for="WGD" class="input-param">WindGustDir</label>
+                        <div id="WGD" class="input-param">
+                        </div>
+                    </div>
+
+                    <div class="grid-child">
+                        <!-- <label for="WindGustSpeed">WindGustSpeed:</label> -->
+                        <input type="text" id="WindGustSpeed" name="WindGustSpeed" class="input-param input-parameter" placeholder="WindGustSpeed">
+                    </div>
+
+                    <div class="grid-child">
+                        <label for="WindDir9am" class="input-param">WindDir9am:</label>
+                        <div id="WD9" class="input-param">
+                        </div>
+                    </div>
+
+                    <div class="grid-child">
+                        <label for="WindDir3pm" class="input-param">WindDir3pm:</label>
+                        <div id="WD3" class="input-param">
+                        </div>
+                    </div>
+
+                    <div class="grid-child" >
+                        <!-- <label for="WindSpeed9am">WindSpeed9am:</label> -->
+                        <input type="text" id="WindSpeed9am" name="WindSpeed9am" placeholder="WindSpeed9am" class="input-param input-parameter">
+                    </div>
+
+                    <div class="grid-child">
+                        <!-- <label for="WindSpeed3pm">WindSpeed3pm:</label> -->
+                        <input type="text" id="WindSpeed3pm" name="WindSpeed3pm" class="input-param input-parameter" placeholder="WindSpeed3pm">
+                    </div>
+                </div>
+                <div class="grid-container2">
+                    <div class="grid-child">
+                        <!-- <label for="Humidity9am">Humidity9am:</label> -->
+                        <input type="text" id="Humidity9am" name="Humidity9am" class="input-param input-parameter" placeholder="Humidity9am">
+                    </div>
+
+                    <div class="grid-child">
+                        <!-- <label for="Humidity3pm">Humidity3pm:</label> -->
+                        <input type="text" id="Humidity3pm" name="Humidity3pm" class="input-param input-parameter" placeholder="Humidity3pm">
+                    </div>
+
+                    <div class="grid-child">
+                        <!-- <label for="Pressure9am">Pressure9am:</label> -->
+                        <input type="text" id="Pressure9am" name="Pressure9am" class="input-param input-parameter" placeholder="Pressure9am">
+                    </div>
+
+                    <div class="grid-child">
+                        <!-- <label for="Pressure3pm">Pressure3pm:</label> -->
+                        <input type="text" id="Pressure3pm" name="Pressure3pm" class="input-param input-parameter" placeholder="Pressure3pm">
+                    </div>
+
+                    <div class="grid-child">
+                        <!-- <label for="Cloud9am">Cloud9am:</label> -->
+                        <input type="text" id="Cloud9am" name="Cloud9am" class="input-param input-parameter" placeholder="Cloud9am">
+                    </div>
+
+                    <div class="grid-child">
+                        <!-- <label for="Cloud3pm">Cloud3pm:</label> -->
+                        <input type="text" id="Cloud3pm" name="Cloud3pm" class="input-param input-parameter" placeholder="Cloud3pm">
+                    </div>
+                </div>
+                <div class="grid-container2">
+                    <div class="grid-child">
+                        <!-- <label for="Temp9am">Temp9am:</label> -->
+                        <input type="text" id="Temp9am" name="Temp9am" class="input-param input-parameter" placeholder="Temp9am">
+                    </div>
+
+                    <div clas="grid-child">
+                        <!-- <label for="Temp3pm">Temp3pm:</label> -->
+                        <input type="text" id="Temp3pm" name="Temp3pm" class="input-param input-parameter" placeholder="Temp3pm">
+                    </div>
+                </div>
+                <div>
+                    <label for="RainToday" class="input-param">Did it Rain Today?:</label>
+                    <select name="RainToday" id="RainToday" class="input-param" style="color:gray;">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-info input-param" style="margin-top: 20px;">Submit
+                </button>
+            </form>
+            <div style="background-color: white;opacity: 0.5;width:50%;border-radius: 5px;margin-top: 10px;">
+                <!-- <h1 class="input-param">{{prediction}}</h1> -->
+                <!-- {{prediction}} -->
+                {% if prediction %}
+                <label for="" class="input-param" style="margin-top: 20px;color:black">Prediction:</label>
+                <img src="{{ prediction }}" alt="" style="width:100px;height:100px;margin-left: 20px;mix-blend-mode: multiply;" >
+                    {% if prediction == 'static/images/cloudrain4.png'%}
+                    <h3 style="margin-left: 100px;color:black;">Rain Tomorrow</h3>
+                    {% else %}
+                    <h3 style="margin-left: 100px;color:black;">No Rain Tomorrow</h3>
+                    {% endif %}
+                {% else %}
+                {% endif %}
+            </div>
+        </main>
+    </body>
+    <script>
+        loc = ['Adelaide','Albany','Albury','AliceSprings','BadgerysCreek','Ballarat','Bendigo','Brisbane',
+        'Cairns','Canberra','Cobar','CoffsHarbour','Dartmoor','Darwin','GoldCoast','Hobart','Katherine','Launceston',
+        'Melbourne','MelbourneAirport','Mildura','Moree','MountGambier','MountGinini','Newcastle','Nhil',
+        'NorahHead','NorfolkIsland','Nuriootpa','PearceRAAF','Penrith','Perth','PerthAirport','Portland','Richmond',
+        'Sale','SalmonGums','Sydney','SydneyAirport','Townsville','Tuggeranong','Uluru','WaggaWagga','Walpole',
+        'Watsonia','Williamtown','Witchcliffe','Wollongong','Woomera'];
+        let items= ""
+        for(let i = 0; i<loc.length; i++){
+            items+=`
+                <option value="${i}">${loc[i]}</option>`
+        }
+        start = `<select name="Location" id="Location" style="color:gray;">`
+        end = `</select>`
+        items = start + items + end;
+        document.getElementById("Loc").innerHTML = items;
+
+        WindGustDir = ['E','ENE','ESE','N','NE','NNE','NNW','NW','S','SE','SSE','SSW','SW','W','WNW','WSW']
+        let windgd = ""
+        for(let i = 0; i < WindGustDir.length; i++){
+            console.log(i)
+            windgd += `
+             <option value="${i}">${WindGustDir[i]}</option>`
+        }
+        start = `<select name="WindGustDir" id="WindGustDir" style="color:gray;"> `
+        end = `</select>`
+        WindGD = start + windgd + end;
+        document.getElementById("WGD").innerHTML = WindGD
+        
+        start = `<select name="WindDir9am" id="WindDir9am" style="color:gray;">`
+        end = `</select>`
+        WindD9 = start + windgd + end
+        document.getElementById("WD9").innerHTML = WindD9
+
+        start = `<select name="WindDir3pm" id="WindDir3pm" style="color:gray;">`
+        end = `</select>`
+        WindD3 = start + windgd + end
+        console.log(WindD3)
+        document.getElementById("WD3").innerHTML = WindD3
+
+    </script>
+</html>
